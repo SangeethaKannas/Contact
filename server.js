@@ -3,7 +3,9 @@ const connectDB = require('./config/db');
 connectDB();
 
 const app = express();
-app.get('/', (req, res) => res.send('API coming soon...'));
+
+app.use(express.json({extended: false }));
+app.use('/api/contact', require('./routes/api/contact'));
 
 const PORT = process.env.PORT || 5999;
 app.listen(PORT, console.log
